@@ -1,0 +1,6 @@
+C:\Users\Juan Carlos\Documents\Visual Studio 2019\Proyects\MCV_1\ML\bin\Release\ML.dll
+C:\Users\Juan Carlos\Documents\Visual Studio 2019\Proyects\MCV_1\ML\bin\Release\ML.pdb
+C:\Users\Juan Carlos\Documents\Visual Studio 2019\Proyects\MCV_1\ML\obj\Release\ML.csprojAssemblyReference.cache
+C:\Users\Juan Carlos\Documents\Visual Studio 2019\Proyects\MCV_1\ML\obj\Release\ML.csproj.CoreCompileInputs.cache
+C:\Users\Juan Carlos\Documents\Visual Studio 2019\Proyects\MCV_1\ML\obj\Release\ML.dll
+C:\Users\Juan Carlos\Documents\Visual Studio 2019\Proyects\MCV_1\ML\obj\Release\ML.pdb

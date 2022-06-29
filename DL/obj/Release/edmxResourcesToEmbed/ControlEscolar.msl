@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JBedollaControlEscolarModelStoreContainer" CdmEntityContainer="JBedollaControlEscolarEntities">
+    <EntitySetMapping Name="Alumno">
+      <EntityTypeMapping TypeName="JBedollaControlEscolarModel.Alumno">
+        <MappingFragment StoreEntitySet="Alumno">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlumnoMateria">
+      <EntityTypeMapping TypeName="JBedollaControlEscolarModel.AlumnoMateria">
+        <MappingFragment StoreEntitySet="AlumnoMateria">
+          <ScalarProperty Name="IdAlumnoMateria" ColumnName="IdAlumnoMateria" />
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materia">
+      <EntityTypeMapping TypeName="JBedollaControlEscolarModel.Materia">
+        <MappingFragment StoreEntitySet="Materia">
+          <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AlumnoAdd" FunctionName="JBedollaControlEscolarModel.Store.AlumnoAdd" />
+    <FunctionImportMapping FunctionImportName="AlumnoDelete" FunctionName="JBedollaControlEscolarModel.Store.AlumnoDelete" />
+    <FunctionImportMapping FunctionImportName="AlumnoGetAll" FunctionName="JBedollaControlEscolarModel.Store.AlumnoGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JBedollaControlEscolarModel.AlumnoGetAll_Result">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AlumnoGetById" FunctionName="JBedollaControlEscolarModel.Store.AlumnoGetById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JBedollaControlEscolarModel.AlumnoGetById_Result">
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AlumnoMateriaAdd" FunctionName="JBedollaControlEscolarModel.Store.AlumnoMateriaAdd" />
+    <FunctionImportMapping FunctionImportName="AlumnoMateriaDelete" FunctionName="JBedollaControlEscolarModel.Store.AlumnoMateriaDelete" />
+    <FunctionImportMapping FunctionImportName="AlumnoMateriaGetAsignadasByAlumno" FunctionName="JBedollaControlEscolarModel.Store.AlumnoMateriaGetAsignadasByAlumno">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JBedollaControlEscolarModel.AlumnoMateriaGetAsignadasByAlumno_Result">
+          <ScalarProperty Name="IdAlumnoMateria" ColumnName="IdAlumnoMateria" />
+          <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
+          <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
+          <ScalarProperty Name="AlumnoNombre" ColumnName="AlumnoNombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="MateriaNombre" ColumnName="MateriaNombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AlumnoMateriaGetNoAsignadasByAlumno" FunctionName="JBedollaControlEscolarModel.Store.AlumnoMateriaGetNoAsignadasByAlumno">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JBedollaControlEscolarModel.AlumnoMateriaGetNoAsignadasByAlumno_Result">
+          <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AlumnoUpdate" FunctionName="JBedollaControlEscolarModel.Store.AlumnoUpdate" />
+    <FunctionImportMapping FunctionImportName="MateriaAdd" FunctionName="JBedollaControlEscolarModel.Store.MateriaAdd" />
+    <FunctionImportMapping FunctionImportName="MateriaDelete" FunctionName="JBedollaControlEscolarModel.Store.MateriaDelete" />
+    <FunctionImportMapping FunctionImportName="MateriaGetAll" FunctionName="JBedollaControlEscolarModel.Store.MateriaGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JBedollaControlEscolarModel.MateriaGetAll_Result">
+          <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MateriaGetById" FunctionName="JBedollaControlEscolarModel.Store.MateriaGetById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JBedollaControlEscolarModel.MateriaGetById_Result">
+          <ScalarProperty Name="IdMateria" ColumnName="IdMateria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MateriaUpdate" FunctionName="JBedollaControlEscolarModel.Store.MateriaUpdate" />
+  </EntityContainerMapping>
+</Mapping>

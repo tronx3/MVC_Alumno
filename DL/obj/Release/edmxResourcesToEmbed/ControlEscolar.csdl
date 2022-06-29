@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JBedollaControlEscolarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AlumnoMateria" Relationship="Self.FK__AlumnoMat__IdAlu__49C3F6B7" FromRole="Alumno" ToRole="AlumnoMateria" />
+  </EntityType>
+  <EntityType Name="AlumnoMateria">
+    <Key>
+      <PropertyRef Name="IdAlumnoMateria" />
+    </Key>
+    <Property Name="IdAlumnoMateria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAlumno" Type="Int32" Nullable="false" />
+    <Property Name="IdMateria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alumno" Relationship="Self.FK__AlumnoMat__IdAlu__49C3F6B7" FromRole="AlumnoMateria" ToRole="Alumno" />
+    <NavigationProperty Name="Materia" Relationship="Self.FK__AlumnoMat__IdMat__4AB81AF0" FromRole="AlumnoMateria" ToRole="Materia" />
+  </EntityType>
+  <EntityType Name="Materia">
+    <Key>
+      <PropertyRef Name="IdMateria" />
+    </Key>
+    <Property Name="IdMateria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Costo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="AlumnoMateria" Relationship="Self.FK__AlumnoMat__IdMat__4AB81AF0" FromRole="Materia" ToRole="AlumnoMateria" />
+  </EntityType>
+  <Association Name="FK__AlumnoMat__IdAlu__49C3F6B7">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="AlumnoMateria" Type="Self.AlumnoMateria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="AlumnoMateria">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AlumnoMat__IdMat__4AB81AF0">
+    <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
+    <End Role="AlumnoMateria" Type="Self.AlumnoMateria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materia">
+        <PropertyRef Name="IdMateria" />
+      </Principal>
+      <Dependent Role="AlumnoMateria">
+        <PropertyRef Name="IdMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JBedollaControlEscolarEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+    <EntitySet Name="AlumnoMateria" EntityType="Self.AlumnoMateria" />
+    <EntitySet Name="Materia" EntityType="Self.Materia" />
+    <AssociationSet Name="FK__AlumnoMat__IdAlu__49C3F6B7" Association="Self.FK__AlumnoMat__IdAlu__49C3F6B7">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="AlumnoMateria" EntitySet="AlumnoMateria" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AlumnoMat__IdMat__4AB81AF0" Association="Self.FK__AlumnoMat__IdMat__4AB81AF0">
+      <End Role="Materia" EntitySet="Materia" />
+      <End Role="AlumnoMateria" EntitySet="AlumnoMateria" />
+    </AssociationSet>
+    <FunctionImport Name="AlumnoAdd">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+      <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AlumnoDelete">
+      <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AlumnoGetAll" ReturnType="Collection(JBedollaControlEscolarModel.AlumnoGetAll_Result)" />
+    <FunctionImport Name="AlumnoGetById" ReturnType="Collection(JBedollaControlEscolarModel.AlumnoGetById_Result)">
+      <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AlumnoMateriaAdd">
+      <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+      <Parameter Name="IdMateria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AlumnoMateriaDelete">
+      <Parameter Name="IdAlumnoMateria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AlumnoMateriaGetAsignadasByAlumno" ReturnType="Collection(JBedollaControlEscolarModel.AlumnoMateriaGetAsignadasByAlumno_Result)">
+      <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AlumnoMateriaGetNoAsignadasByAlumno" ReturnType="Collection(JBedollaControlEscolarModel.AlumnoMateriaGetNoAsignadasByAlumno_Result)">
+      <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AlumnoUpdate">
+      <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+      <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MateriaAdd">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Costo" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="MateriaDelete">
+      <Parameter Name="IdMateria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MateriaGetAll" ReturnType="Collection(JBedollaControlEscolarModel.MateriaGetAll_Result)" />
+    <FunctionImport Name="MateriaGetById" ReturnType="Collection(JBedollaControlEscolarModel.MateriaGetById_Result)">
+      <Parameter Name="IdMateria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MateriaUpdate">
+      <Parameter Name="IdMateria" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Costo" Mode="In" Type="Decimal" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="AlumnoGetAll_Result">
+    <Property Type="Int32" Name="IdAlumno" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="AlumnoGetById_Result">
+    <Property Type="Int32" Name="IdAlumno" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="AlumnoMateriaGetAsignadasByAlumno_Result">
+    <Property Type="Int32" Name="IdAlumnoMateria" Nullable="false" />
+    <Property Type="Int32" Name="IdAlumno" Nullable="false" />
+    <Property Type="Int32" Name="IdMateria" Nullable="false" />
+    <Property Type="String" Name="AlumnoNombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MateriaNombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Costo" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="AlumnoMateriaGetNoAsignadasByAlumno_Result">
+    <Property Type="Int32" Name="IdMateria" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Costo" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="MateriaGetAll_Result">
+    <Property Type="Int32" Name="IdMateria" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Costo" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="MateriaGetById_Result">
+    <Property Type="Int32" Name="IdMateria" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Costo" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+</Schema>
