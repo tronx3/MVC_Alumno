@@ -77,6 +77,7 @@ namespace SL.Controllers
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+            // metodo sin realizar
         }
     }
 }
